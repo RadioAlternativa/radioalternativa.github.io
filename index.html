@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Radio Alternativa</title>
+  <style>
+    /* RESET Y CONFIGURACIÓN GLOBAL */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-user-select: none; /* Safari / Chrome */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE / Edge */
+      user-select: none;         /* Estándar */
+      -webkit-touch-callout: none; /* Desactiva menú emergente al mantener pulsado */
+      -webkit-tap-highlight-color: transparent; /* Quita el recuadro/cursor al tocar */
+    }
+
+    button, a, input[type="range"] {
+      cursor: pointer;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: #111111;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7LBSa-USRpsowNpifL7OIQDNSh9Sp6WtL6duarYbU_f4YBItI05cArMlmFKya4dNHoZ02Sr9SZCbvR4hbRTp83zSPQjW6_vHJ4NLefLpok2IjafJRgOKtn65vq8VzuextUwaa-t3sdTQxRbkKkpp96GK2L6MQ7pNZ66rZx5Fd7YWqLcJKhNNIoynLz98N/s0/Gemini_Generated_Image_ll18d8ll18d8ll18.png");
+      background-size: cover;          
+      background-position: center; 
+      background-repeat: no-repeat;
+      background-attachment: fixed;    
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 10px 20px 10px;
+      position: relative;
+    }
+
+    .main-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: calc(100vh - 25px);
+    }
+
+    /* BLOQUE SUPERIOR */
+    .top-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .title-row-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .main-title {
+      font-family: 'Arial Black', Gadget, sans-serif;
+      font-size: clamp(1.4rem, 4.2vw, 3.8rem);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+      animation: backLightGlow 2.5s infinite alternate ease-in-out;
+      white-space: nowrap;
+    }
+
+    @keyframes backLightGlow {
+      0% { filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.6)) drop-shadow(0 0 20px rgba(255, 102, 0, 0.4)); }
+      50% { filter: drop-shadow(0 0 25px rgba(255, 230, 0, 0.95)) drop-shadow(0 0 45px rgba(255, 51, 0, 0.8)); }
+      100% { filter: drop-shadow(0 0 12px rgba(255, 153, 0, 0.7)) drop-shadow(0 0 28px rgba(255, 0, 85, 0.5)); }
+    }
+
+    .animated-slogan {
+      font-family: Arial, sans-serif;
+      font-size: clamp(0.7rem, 1.6vw, 1.1rem);
+      font-weight: bold;
+      padding: 5px 12px; 
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: inline-block;
+      max-width: 98%;
+      margin-top: 12px;
+      animation: sloganFire 0.4s infinite alternate linear;
+    }
+
+    @keyframes sloganFire {
+      0% { color: #00ffff; text-shadow: 0 0 10px #00ffff, 2px 2px 5px #000; }
+      33% { color: #ffea00; text-shadow: 0 0 12px #ffea00, 2px 2px 5px #000; }
+      66% { color: #ff3300; text-shadow: 0 0 12px #ff3300, 2px 2px 5px #000; }
+      100% { color: #00ff66; text-shadow: 0 0 10px #00ff66, 2px 2px 5px #000; }
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .btn-social-real {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.9);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      transition: transform 0.2s ease, filter 0.2s ease;
+      filter: drop-shadow(0 0 6px rgba(255, 204, 0, 0.8));
+      flex-shrink: 0;
+    }
+
+    .btn-social-real:hover {
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 12px rgba(255, 230, 0, 1));
+    }
+
+    .btn-social-real svg {
+      width: 18px;
+      height: 18px;
+      fill: #ffffff;
+      display: block;
+    }
+
+    .btn-social-real.fb { background: #1877F2; }
+    .btn-social-real.ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+    .btn-social-real.yt { background: #FF0000; }
+    .btn-social-real.tk { background: #000000; }
+    .btn-social-real.wa { background: #25D366; }
+
+    /* BLOQUE INFERIOR */
+    .bottom-section {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 25px; 
+      display: flex;
+      justify-content: flex-start; 
+    }
+
+    .player-sketch-layout {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .play-button-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .custom-play-btn {
+      background: radial-gradient(circle, #ffcc00 20%, #ff6600 70%, #cc0000 100%);
+      color: #ffffff;
+      border: 4px solid #ffffff;
+      outline: 4px solid #ff3300;
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      font-size: 38px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(255, 102, 0, 0.9), inset 0 0 15px rgba(255, 255, 255, 0.8);
+      animation: glowPulse 1.2s infinite alternate ease-in-out;
+      z-index: 2;
+      filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
+    }
+
+    @keyframes glowPulse {
+      0% { transform: scale(1); box-shadow: 0 0 18px rgba(255, 102, 0, 0.8), 0 0 35px rgba(255, 204, 0, 0.5); }
+      100% { transform: scale(1.04); box-shadow: 0 0 32px rgba(255, 0, 0, 0.95), 0 0 55px rgba(255, 153, 0, 0.8); }
+    }
+
+    /* COLUMNA DE VOLUMEN Y CONTADOR */
+    .volume-vertical-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background: transparent;
+      padding: 0;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 6px #ffcc00) drop-shadow(0 0 10px #000000);
+    }
+
+    .volume-slider-vertical {
+      writing-mode: bt-lr;
+      -webkit-appearance: slider-vertical;
+      width: 10px;
+      height: 110px;
+      cursor: pointer;
+      accent-color: #ffcc00;
+      filter: drop-shadow(0 0 4px #000);
+    }
+
+    .speaker-btn {
+      background: none;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 6px #ffffff) drop-shadow(2px 2px 4px #000);
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+
+    /* CONTADOR DE TIEMPO AZUL OSCURO FULL HD */
+    .timer-display {
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0d2847;
+      text-shadow: 
+        0 0 1px #ffffff,
+        0 0 8px rgba(0, 150, 255, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.9);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 6px;
+      padding: 2px 8px;
+      margin-top: 4px;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .right-sketch-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .live-badge-sketch {
+      position: relative;
+      background: linear-gradient(135deg, #ff0033, #990000);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 900;
+      padding: 4px 50px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      animation: livePulseSlow 1.8s infinite alternate ease-in-out;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    @keyframes livePulseSlow {
+      0% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px rgba(255, 0, 51, 0.7); filter: drop-shadow(0 0 4px #ff0033); }
+      100% { opacity: 0.85; transform: scale(0.98); box-shadow: 0 0 20px rgba(255, 51, 102, 1); filter: drop-shadow(0 0 10px #ff3366); }
+    }
+
+    .station-floor-title {
+      font-family: 'Arial Black', Gadget, sans-serif;
+      font-size: clamp(1.1rem, 3.2vw, 2.3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      animation: fireText 0.25s infinite alternate linear;
+    }
+
+    @keyframes fireText {
+      0% { color: #ffea00; text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 10px #ffea00, 0 0 20px #ff0000; }
+      50% { color: #ffffff; text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 18px #ff6600, 0 0 30px #ffcc00; }
+      100% { color: #ff3300; text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 12px #ff3300, 0 0 22px #ffff00; }
+    }
+
+    @media screen and (max-width: 768px) {
+      body {
+        padding: 5px 8px 10px 8px;
+        background-attachment: scroll;
+      }
+
+      .main-wrapper {
+        min-height: auto;
+        justify-content: flex-start;
+        gap: 0px;
+      }
+
+      .top-section {
+        gap: 4px;
+      }
+
+      .title-row-container {
+        gap: 0;
+      }
+
+      .main-title {
+        font-size: 1.25rem;
+      }
+
+      .animated-slogan {
+        font-size: 0.65rem;
+        padding: 4px 8px;
+        line-height: 1.2;
+        margin-top: 14px;
+      }
+
+      .social-buttons {
+        gap: 6px;
+        margin-top: 6px;
+      }
+
+      .btn-social-real {
+        width: 32px;
+        height: 32px;
+      }
+
+      .btn-social-real svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .bottom-section {
+        margin-top: calc(100vh - 460px);
+        margin-bottom: 20px;
+      }
+
+      .player-sketch-layout {
+        gap: 8px;
+      }
+
+      .custom-play-btn {
+        width: 65px;
+        height: 65px;
+        font-size: 22px;
+      }
+
+      .volume-slider-vertical {
+        height: 65px;
+      }
+
+      .speaker-btn {
+        font-size: 18px;
+      }
+
+      .timer-display {
+        font-size: 0.72rem;
+        padding: 1px 5px;
+        letter-spacing: 1px;
+      }
+
+      .live-badge-sketch {
+        font-size: 9px;
+        padding: 2px 20px;
+      }
+
+      .station-floor-title {
+        font-size: 0.78rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-wrapper">
+
+    <!-- BLOQUE SUPERIOR -->
+    <div class="top-section">
+      <div class="title-row-container">
+        <h1 class="main-title">RADIO ALTERNATIVA</h1>
+      </div>
+      
+      <p class="animated-slogan">
+        ¡La primera en el dial! Transmitiendo desde Canaguá, pueblos del sur del estado Mérida, Venezuela.
+      </p>
+
+      <div class="social-buttons">
+        <a href="https://www.facebook.com/share/1K16m28a8T" target="_blank" class="btn-social-real fb" title="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.instagram.com/radioalternativacanagua" target="_blank" class="btn-social-real ig" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="http://www.youtube.com/@alternativa887" target="_blank" class="btn-social-real yt" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="https://www.tiktok.com/@alternativa88.7fm" target="_blank" class="btn-social-real tk" title="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.36 1.53-1.34 2.53.01 1.05.63 2.03 1.55 2.5 1.05.53 2.37.44 3.32-.23.86-.6 1.37-1.61 1.37-2.65.03-4.99.01-9.98.02-14.97z"/></svg></a>
+        <a href="https://wa.me/584167740336?text=Hola%20Radio%20Alternativa" target="_blank" class="btn-social-real wa" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+      </div>
+    </div>
+
+    <!-- BLOQUE INFERIOR -->
+    <div class="bottom-section">
+      <div class="player-sketch-layout">
+        
+        <!-- BOTÓN PLAY PERSONALIZADO -->
+        <div class="play-button-container" id="playBtnContainer">
+          <button id="togglePlayBtn" class="custom-play-btn" onclick="toggleAudio()">
+            <span id="playIcon">▶</span>
+          </button>
+        </div>
+
+        <!-- VOLUMEN VERTICAL + CORNETA + CONTADOR ELEGANTE -->
+        <div class="volume-vertical-wrapper">
+          <input type="range" id="volumeControl" class="volume-slider-vertical" min="0" max="1" step="0.05" value="1" oninput="changeVolume(this.value)">
+          <button class="speaker-btn" id="muteBtn" onclick="toggleMute()" title="Silenciar / Activar sonido">🔊</button>
+          <div class="timer-display" id="timerDisplay">00:00</div>
+        </div>
+
+        <!-- DETALLES DE LA EMISORA -->
+        <div class="right-sketch-col">
+          <span class="live-badge-sketch">
+            EN VIVO
+          </span>
+
+          <div class="station-floor-title">
+            RADIO ALTERNATIVA ON LINE
+          </div>
+        </div>
+
+        <!-- REPRODUCCIÓN DIRECTA -->
+        <audio id="radioPlayer" preload="auto">
+          <source src="https://radios.yanapak.org/alternativacanaguajavieralonsogarciamendez" type="audio/aac">
+        </audio>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    var player = document.getElementById("radioPlayer");
+    var btn = document.getElementById("togglePlayBtn");
+    var icon = document.getElementById("playIcon");
+    var volumeControl = document.getElementById("volumeControl");
+    var muteBtn = document.getElementById("muteBtn");
+    var timerDisplay = document.getElementById("timerDisplay");
+    
+    var timerInterval = null;
+    var secondsElapsed = 0;
+    var lastVolume = 1;
+
+    function playStream() {
+      player.play().then(function() {
+        icon.innerHTML = "❚❚";
+        btn.style.background = "radial-gradient(circle, #ff3366 20%, #cc0033 70%, #880011 100%)";
+        btn.style.outlineColor = "#ff0055";
+        startTimer();
+      }).catch(function(err) {
+        console.log("Autoplay bloqueado hasta interacción del usuario.");
+      });
+    }
+
+    function pauseStream() {
+      player.pause();
+      icon.innerHTML = "▶";
+      btn.style.background = "radial-gradient(circle, #ffcc00 20%, #ff6600 70%, #cc0000 100%)";
+      btn.style.outlineColor = "#ff3300";
+      stopTimer();
+    }
+
+    function toggleAudio() {
+      if (player.paused) {
+        playStream();
+      } else {
+        pauseStream();
+      }
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(function() {
+        secondsElapsed++;
+        var mins = Math.floor(secondsElapsed / 60);
+        var secs = secondsElapsed % 60;
+        var formattedMins = mins < 10 ? "0" + mins : mins;
+        var formattedSecs = secs < 10 ? "0" + secs : secs;
+        timerDisplay.innerText = formattedMins + ":" + formattedSecs;
+      }, 1000);
+    }
+
+    function stopTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+    }
+
+    function changeVolume(val) {
+      player.volume = val;
+      if (val == 0) {
+        muteBtn.innerText = "🔇";
+      } else {
+        muteBtn.innerText = "🔊";
+        lastVolume = val;
+      }
+    }
+
+    function toggleMute() {
+      if (player.volume > 0) {
+        lastVolume = player.volume;
+        player.volume = 0;
+        volumeControl.value = 0;
+        muteBtn.innerText = "🔇";
+      } else {
+        player.volume = lastVolume > 0 ? lastVolume : 1;
+        volumeControl.value = player.volume;
+        muteBtn.innerText = "🔊";
+      }
+    }
+
+    /* INICIALIZACIÓN ULTRARRÁPIDA CON TRUCO DE DESBLOQUEO AL PRIMER TOCADO */
+    document.addEventListener("DOMContentLoaded", function() {
+      playStream();
+
+      var unlockAudio = function() {
+        if (player.paused) {
+          playStream();
+        }
+      };
+
+      document.body.addEventListener('click', unlockAudio, { once: true });
+      document.body.addEventListener('touchstart', unlockAudio, { once: true });
+    });
+  </script>
+
+</body>
+</html>
