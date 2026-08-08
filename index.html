@@ -45,6 +45,35 @@
       position: relative;
     }
 
+    /* RELOJ DIGITAL VENEZUELA (SUPERIOR DERECHA) */
+    .clock-container {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      text-align: right;
+      z-index: 100;
+    }
+
+    /* HORA EN ROJIZO INTENSO */
+    .clock-time {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.6rem);
+      font-weight: 900;
+      color: #ff2a4b;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 10px rgba(255, 42, 75, 0.7);
+      line-height: 1;
+    }
+
+    /* FECHA DESTACADA (DD Mes YYYY) */
+    .clock-date {
+      font-family: Arial, sans-serif;
+      font-size: clamp(0.85rem, 1.8vw, 1.25rem);
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 5px rgba(0, 0, 0, 0.8);
+      margin-top: 4px;
+    }
+
     .main-wrapper {
       width: 100%;
       max-width: 1200px;
@@ -62,7 +91,7 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      margin-top: 0;
+      margin-top: 25px;
       text-align: center;
     }
 
@@ -73,22 +102,23 @@
       width: 100%;
     }
 
+    /* TÍTULO VERDE MANZANA */
     .main-title {
       font-family: 'Arial Black', Gadget, sans-serif;
-      font-size: clamp(1.4rem, 4.2vw, 3.8rem);
+      font-size: clamp(1.8rem, 5.5vw, 4.8rem);
       text-transform: uppercase;
       letter-spacing: 1px;
       line-height: 1;
-      color: #ffffff;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+      color: #39FF14;
+      text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 15px rgba(57, 255, 20, 0.8);
       animation: backLightGlow 2.5s infinite alternate ease-in-out;
       white-space: nowrap;
     }
 
     @keyframes backLightGlow {
-      0% { filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.6)) drop-shadow(0 0 20px rgba(255, 102, 0, 0.4)); }
-      50% { filter: drop-shadow(0 0 25px rgba(255, 230, 0, 0.95)) drop-shadow(0 0 45px rgba(255, 51, 0, 0.8)); }
-      100% { filter: drop-shadow(0 0 12px rgba(255, 153, 0, 0.7)) drop-shadow(0 0 28px rgba(255, 0, 85, 0.5)); }
+      0% { filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.6)) drop-shadow(0 0 20px rgba(0, 255, 128, 0.4)); }
+      50% { filter: drop-shadow(0 0 25px rgba(57, 255, 20, 0.95)) drop-shadow(0 0 45px rgba(57, 255, 20, 0.8)); }
+      100% { filter: drop-shadow(0 0 12px rgba(57, 255, 20, 0.7)) drop-shadow(0 0 28px rgba(0, 230, 118, 0.5)); }
     }
 
     .animated-slogan {
@@ -203,7 +233,7 @@
       100% { transform: scale(1.04); box-shadow: 0 0 32px rgba(255, 0, 0, 0.95), 0 0 55px rgba(255, 153, 0, 0.8); }
     }
 
-    /* COLUMNA DE VOLUMEN Y CONTADOR */
+    /* COLUMNA DE VOLUMEN Y CONTADOR SUELTO */
     .volume-vertical-wrapper {
       display: flex;
       flex-direction: column;
@@ -235,25 +265,25 @@
       line-height: 1;
     }
 
-    /* CONTADOR DE TIEMPO AZUL OSCURO FULL HD */
+    /* CONTADOR DE TIEMPO SUELTO */
     .timer-display {
       font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
       font-size: 1.1rem;
       font-weight: 800;
-      color: #0d2847;
+      color: #00ffff;
       text-shadow: 
-        0 0 1px #ffffff,
-        0 0 8px rgba(0, 150, 255, 0.6),
-        0 2px 4px rgba(0, 0, 0, 0.9);
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 6px;
-      padding: 2px 8px;
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0 0 8px rgba(0, 255, 255, 0.8);
+      background: none;
+      border: none;
+      padding: 0;
       margin-top: 4px;
       letter-spacing: 1.5px;
       white-space: nowrap;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      box-shadow: none;
     }
 
     .right-sketch-col {
@@ -313,6 +343,11 @@
         background-attachment: scroll;
       }
 
+      .clock-container {
+        top: 5px;
+        right: 8px;
+      }
+
       .main-wrapper {
         min-height: auto;
         justify-content: flex-start;
@@ -321,6 +356,7 @@
 
       .top-section {
         gap: 4px;
+        margin-top: 20px;
       }
 
       .title-row-container {
@@ -328,7 +364,7 @@
       }
 
       .main-title {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
       }
 
       .animated-slogan {
@@ -377,8 +413,7 @@
       }
 
       .timer-display {
-        font-size: 0.72rem;
-        padding: 1px 5px;
+        font-size: 0.75rem;
         letter-spacing: 1px;
       }
 
@@ -394,6 +429,12 @@
   </style>
 </head>
 <body>
+
+  <!-- RELOJ DIGITAL ESQUINA SUPERIOR DERECHA -->
+  <div class="clock-container">
+    <div class="clock-time" id="clockTime">00:00:00 AM</div>
+    <div class="clock-date" id="clockDate">00 Mes 0000</div>
+  </div>
 
   <div class="main-wrapper">
 
@@ -427,7 +468,7 @@
           </button>
         </div>
 
-        <!-- VOLUMEN VERTICAL + CORNETA + CONTADOR ELEGANTE -->
+        <!-- VOLUMEN VERTICAL + CORNETA + CONTADOR SUELTO -->
         <div class="volume-vertical-wrapper">
           <input type="range" id="volumeControl" class="volume-slider-vertical" min="0" max="1" step="0.05" value="1" oninput="changeVolume(this.value)">
           <button class="speaker-btn" id="muteBtn" onclick="toggleMute()" title="Silenciar / Activar sonido">🔊</button>
@@ -533,7 +574,40 @@
       }
     }
 
-    /* INICIALIZACIÓN ULTRARRÁPIDA CON TRUCO DE DESBLOQUEO AL PRIMER TOCADO */
+    /* RELOJ Y FECHA FORMATO: 07 Agosto 2026 (ZONA HORARIA VENEZUELA) */
+    function updateClockVET() {
+      var now = new Date();
+      
+      var timeOptions = {
+        timeZone: 'America/Caracas',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      };
+
+      var dayOptions = { timeZone: 'America/Caracas', day: '2-digit' };
+      var monthOptions = { timeZone: 'America/Caracas', month: 'long' };
+      var yearOptions = { timeZone: 'America/Caracas', year: 'numeric' };
+
+      var timeStr = new Intl.DateTimeFormat('es-VE', timeOptions).format(now);
+      var dayStr = new Intl.DateTimeFormat('es-VE', dayOptions).format(now);
+      var monthStr = new Intl.DateTimeFormat('es-VE', monthOptions).format(now);
+      var yearStr = new Intl.DateTimeFormat('es-VE', yearOptions).format(now);
+
+      // Capitalizar la primera letra del mes
+      monthStr = monthStr.charAt(0).toUpperCase() + monthStr.slice(1);
+
+      var formattedDate = dayStr + ' ' + monthStr + ' ' + yearStr;
+
+      document.getElementById('clockTime').textContent = timeStr.toUpperCase();
+      document.getElementById('clockDate').textContent = formattedDate;
+    }
+
+    setInterval(updateClockVET, 1000);
+    updateClockVET();
+
+    /* INICIALIZACIÓN CON DESBLOQUEO AL TOUCH */
     document.addEventListener("DOMContentLoaded", function() {
       playStream();
 
