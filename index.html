@@ -337,6 +337,7 @@
       100% { color: #ff3300; text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 12px #ff3300, 0 0 22px #ffff00; }
     }
 
+    /* REGLAS ESPECÍFICAS PARA MÓVILES */
     @media screen and (max-width: 768px) {
       body {
         padding: 5px 8px 10px 8px;
@@ -344,8 +345,8 @@
       }
 
       .clock-container {
-        top: 5px;
-        right: 8px;
+        top: 8px;
+        right: 10px;
       }
 
       .main-wrapper {
@@ -354,9 +355,10 @@
         gap: 0px;
       }
 
+      /* SE AUMENTA EL MARGEN SUPERIOR SOLO EN MÓVILES PARA QUE EL TÍTULO QUEDE POR DEBAJO DE LA FECHA/MENÚ */
       .top-section {
         gap: 4px;
-        margin-top: 20px;
+        margin-top: 65px; 
       }
 
       .title-row-container {
@@ -371,7 +373,7 @@
         font-size: 0.65rem;
         padding: 4px 8px;
         line-height: 1.2;
-        margin-top: 14px;
+        margin-top: 10px;
       }
 
       .social-buttons {
@@ -390,7 +392,7 @@
       }
 
       .bottom-section {
-        margin-top: calc(100vh - 460px);
+        margin-top: calc(100vh - 510px);
         margin-bottom: 20px;
       }
 
